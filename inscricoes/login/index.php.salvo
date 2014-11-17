@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>PROENDURO</title>
+<style type="text/css">
+    @import url("../css/form.css");
+</style>
+</head>
+
+<body>
+<center><font face="verdana" size="2"> Se ainda n&atilde;o for cadastrado, <a href="../cadastro"> clique aqui </a> para cadastrar.</font><center>
+<form id="form1" name="form1" method="post" action="auth.php">
+  <table width="0%" border="0" align="center" cellpadding="0" cellspacing="5">
+    <tr>
+      <td>Email:</td>
+      <td><label for="email"></label>
+      <input name="cpf" type="text" id="cpf" size="40" /></td>
+    </tr>
+    <tr>
+      <td>Senha:</td>
+      <td><label for="senha"></label>
+      <input name="senha" type="password" id="senha" size="40" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Acessar" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

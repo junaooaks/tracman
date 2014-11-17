@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <title>PROENDURO</title>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <?php include ("../mysql/conexao_mysql.php"); ?>
+<STYLE TYPE="text/css">
+P.quebra-aqui {page-break-before: always}
+</STYLE>
+</head>
+<body>
+<?php
+$prova_id = $_REQUEST['prova'];
+
+        //busca tudo o que esta na tabela
+	$sql=mysql_query("SELECT * FROM prova wheRE id_prova=$prova_id")or die (mysql_error());
+	$row=mysql_fetch_array($sql);
+                $nome = $row['prova'];
+                $local      = $row['local'];
+                $data       = $row['data'];
+                $campeonato = $row['campeonato'];
+
+
+
+
+ echo"<font face='verdana'>
+<font size='5'>$campeonato</font><br><font size='4'>$nome - $local</font><br><br>";
+
+echo "<table border='1' cellspacing='1' cellpadding='0'>
+<tr>
+	<td><b>#</td>
+	<td><b>Nome</td>
+	<td><b>Numero</td>
+	<td><b>Cidade</td>
+	<td><b>Categoria</td>
+</tr>";
+$p=1;
+$sql = mysql_query("SELECT * FROM fichas, piloto, prova where fichas.prova_id=$prova_id and prova.id_prova=$prova_id and piloto.id=fichas.piloto_id")or die (mysql_error());
+
+        while ($row = mysql_fetch_array($sql))
+                {
+                $prova      = $row['prova'];
+                $local      = $row['local'];
+                $data       = $row['data'];
+                $campeonato = $row['campeonato'];
+                $categoria  = $row['categoria'];
+                $nome         = $row['nomePiloto'];
+                $rg     = $row['identidade'];
+                $cpf         = $row['cpf'];
+                $cidade         = $row['cidade'];
+                $uf         = $row['estado'];
+                $endereco         = $row['endereco'];
+                $bairro         = $row['bairro'];
+                $cep         = $row['cep'];
+                $telefone         = $row['telefone'];
+                $numero         = $row['numero'];
+                $patrocinio         = $row['patrocinio'];
+
+
+
+echo "
+<tr><td>$p</td> <td> $nome </td><td> $numero  </td><td> $cidade  </td><td> $categoria  </td></tr>";
+$p=$p+1;}
+echo "</table>";
+?>

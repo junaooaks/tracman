@@ -1,0 +1,18 @@
+* Comentário
+# << URLs Amigaveis 
+* verifica se o modulo rewrite está habilitado se sim executa o bloco dentro
+
+* habilita o modulo Rewrite
+RewriteEngine On
+* Indica qual é a pasta base de todo o conteudo
+RewriteBase /
+* Verifica se a url digitada é um arquivo caso seja para aqui
+RewriteCond %{REQUEST_FILENAME} !-f
+* Verifica se a url digitada é uma pasta caso seja para aqui
+RewriteCond %{REQUEST_FILENAME} !-d
+* Mostra o caminho completo do meu arquivo index.php que caso nenhum desses comandos assim seja valido vai para ele.
+RewriteRule .(/)?$ www.proenduro.com.br/inscricoes/index.php 
+* fecha verificador
+
+* comentário
+# >> URLs Amigaveis

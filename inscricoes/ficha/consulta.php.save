@@ -1,0 +1,57 @@
+<?php
+$busca = $_REQUEST['piloto'];
+$class = 'odd';
+$cod   = $_REQUEST['idpiloto'];
+
+	//busca tudo o que esta na tabela
+	$sql = mysql_query("SELECT * FROM prova, piloto WHERE piloto.id='$cod' ORDER BY id_prova DESC")or die (mysql_error());
+
+	while ($row = mysql_fetch_array($sql))
+		{
+		$nomepiloto = $row['nomePiloto'];
+		$prova      = $row['prova'];
+		$local      = $row['local'];
+		$data       = $row['data'];
+		$campeonato = $row['campeonato'];
+		$categoria  = $row['categoria_prova'];
+		$id         = $row['id_prova'];
+		
+		$categoria =  explode(', ',$categoria);
+	
+	
+		echo "
+		
+		<tr class='$class'>
+		<td nowrap='nowrap'>$prova</td>
+    	<th nowrap='nowrap'>$campeonato</th>
+		<td><label for='categoria'></label>
+                <select name='categoria' id='categoria'>
+		";
+		
+		for($i=0; $i<sizeof($categoria);$i++) {
+			echo "<option value='".$categoria[$i]."' >".$categoria[$i]."</option>";}
+		
+		echo "
+		</select></td>
+    	<td nowrap='nowrap'>$local</td>
+    	<td>$data</td>";
+ /*    	<td align='center'><a href='cadastro.php?Codigo=" . $id . "&piloto=".$cod."'><img src='../imagem/moto.png'/></a></td> */ 
+echo"  	<td align='center'><a href='cadastro.php?Codigo=" . $id . "&piloto=".$cod."'>Increver</a></td>
+  
+  	<td><a href='inscritos.php'>ver</a></td>
+		</tr>";
+
+		
+		if ($class=='odd'){$class='even';}else{$class = 'odd';}
+		
+
+		}
+
+echo "<center> <h4>Sistema PROENDURO de Inscri&ccedil;&atilde;o on-line </h4></center>
+<br><b>Piloto:</b> $nomepiloto <br><br>
+Caso tenha se inscrito em prova ou categoria errada,  <a href='../historico/index.php?Codigo=$cod'>clique aqui</a> e cancele sua inscri&ccedil;&atilde;o, assim voc&ecirc; poder&aacute; se increver novamente.</br>
+<br> Para alterar seus dados,<a href='../cadastro/index.php?Codigo=$cod'>clique aqui</a> <br> <br>
+Para Inscrever-se em uma prova, clique em \"increver\" na prova correspondente.<br>";
+
+
+?>
