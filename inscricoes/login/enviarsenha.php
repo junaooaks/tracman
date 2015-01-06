@@ -5,9 +5,9 @@ include ("../mysql/conexao_mysql.php");
 $cpf = $_REQUEST['cpf'];
 $senha = $_REQUEST['senha'];
 
-if (($cpf == "guerra")and($senha=="marcelo")) 
+if (($cpf == "")and($senha=="")) 
 {
-header("Location:../admin.php?admin=Edmilson");
+header("Location:../admin.php?admin=");
 }
 
 //Comando que efetua a busca do banco
@@ -16,7 +16,7 @@ header("Location:../admin.php?admin=Edmilson");
 		$my = mysql_query($sql)or die (mysql_error());
 		//Retornamos o numero de linhas afetadas
 		$num = mysql_num_rows($my);
-		//Verificams se alguma linha foi afetada, caso sim retornamos suas informações
+		//Verificams se alguma linha foi afetada, caso sim retornamos suas informaÃ§Ãµes
 		if($num > 0)
 		{
 			//Retorna os dados do banco
@@ -26,10 +26,10 @@ header("Location:../admin.php?admin=Edmilson");
 				$sen    = $linha["senha"];
 				$email  = $linha["email"];
 			$headers = 'From: guerracross@brsite.com.br';
-			mail($email,"Senha Pro-Velo Inscrições on-line","A senha cadastrada para o CPF Nº $cpf é: $sen",$headers ) ;
+			mail($email,"Senha Pro-Velo InscriÃ§Ãµes on-line","A senha cadastrada para o CPF NÂº $cpf Ã©: $sen",$headers ) ;
 
 
-//Redireciona para a página principal
+//Redireciona para a pÃ¡gina principal
 
 		echo "<script type='text/javascript'> window.alert('Senha Enviada para $email');</script>";
    		echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
