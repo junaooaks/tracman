@@ -5,9 +5,9 @@ include ("../mysql/conexao_mysql.php");
 $cpf = $_REQUEST['cpf'];
 $senha = $_REQUEST['senha'];
 
-if (($cpf == "guerra")and($senha=="marcelo")) 
+if (($cpf == "guerra")and($senha=="")) 
 {
-header("Location:../admin.php?admin=Edmilson");
+header("Location:../admin.php?admin=");
 }
 
 //Comando que efetua a busca do banco
@@ -16,7 +16,7 @@ header("Location:../admin.php?admin=Edmilson");
 		$my = mysql_query($sql)or die (mysql_error());
 		//Retornamos o numero de linhas afetadas
 		$num = mysql_num_rows($my);
-		//Verificams se alguma linha foi afetada, caso sim retornamos suas informaÁıes
+		//Verificams se alguma linha foi afetada, caso sim retornamos suas informa√ß√µes
 		if($num > 0)
 		{
 			//Retorna os dados do banco
@@ -28,7 +28,7 @@ header("Location:../admin.php?admin=Edmilson");
 			
 
 
-//Redireciona para a p·gina principal
+//Redireciona para a p√°gina principal
 header("Location:../cadastro/index.php?Codigo=$id");
 
 //header("Location:../ficha/index.php?idpiloto=$id");
